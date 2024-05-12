@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import shareVid from '../assets/share.mp4'
 import logo from '../assets/logowhite.png'
-import { client } from '../../client'
+import { client } from '../client'
 
 const responseGoogle = navigate => credentialResponse => {
   const user = jwtDecode(credentialResponse.credential)
