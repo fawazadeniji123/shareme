@@ -53,7 +53,7 @@ const Home = () => {
           </Link>
           {user ? (
             <Link to={`user-profile/${user?._id}`}>
-              <img src={user?.image} alt='ShareMe Logo' className='w-28' />
+              <img src={user?.image} alt='User Profile' className='w-28' />
             </Link>
           ) : (
               <Link to={'/login'}>
@@ -82,7 +82,7 @@ const Home = () => {
             path='user-profile/:userId'
             element={<UserProfile user={user} />}
           />
-          <Route path='*' element={<Pins user={user && user} />} />
+          <Route path='/*' element={<Pins user={user && user} />} />
         </Routes>
       </div>
     </div>
