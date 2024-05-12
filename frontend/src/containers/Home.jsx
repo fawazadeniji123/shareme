@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import { HiMenu } from 'react-icons/hi'
 import { AiFillCloseCircle } from 'react-icons/ai'
+import { MdAccountCircle } from "react-icons/md";
 
 import { Sidebar, UserProfile } from '../components'
 import Pins from './Pins'
@@ -55,7 +56,9 @@ const Home = () => {
               <img src={user?.image} alt='ShareMe Logo' className='w-28' />
             </Link>
           ) : (
-            <Link to={'/login'}>Login</Link>
+              <Link to={'/login'}>
+                <MdAccountCircle fontSize={40} className='cursor-pointer' />
+            </Link>
           )}
         </div>
         {toggleSidebar && (
