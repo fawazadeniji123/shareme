@@ -1,16 +1,33 @@
 import { GoogleLogin } from '@react-oauth/google'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import shareVid from '../assets/share.mp4'
 import logo from '../assets/logowhite.png'
+import { client } from '../../client'
 
-const responseGoogle = credentialResponse => {
-  console.log(jwtDecode(credentialResponse.credential))
+const responseGoogle = navigate => credentialResponse => {
+  const user = jwtDecode(credentialResponse.credential)
+  localStorage.setItem('user', JSON.stringify(user))
+
+  const { name, picture, sub: googleId } = user
+
+  const doc = {
+    _id: googleId,
+    _type: 'user',
+    userName: name,
+    image: picture,
+  }
+
+  client.createIfNotExists(doc).then(() => {
+    navigate('/', { replace: true })
+  })
 }
 
 const Login = () => {
+  const navigate = useNavigate()
+
   return (
-    <div className='flex justify-start items-center flex-col h-screen'>
+    <div className='flex justify-start items-center flex-col h-screen overflow-hidden'>
       <div className='relative w-full h-full'>
         <video
           src={shareVid}
@@ -29,7 +46,7 @@ const Login = () => {
 
           <div className='shadow-2xl'>
             <GoogleLogin
-              onSuccess={responseGoogle}
+              onSuccess={responseGoogle(navigate)}
               onError={e => {
                 console.log('Login Failed')
                 console.log(e)
@@ -37,7 +54,7 @@ const Login = () => {
               auto_select={true}
               useOneTap
               cancel_on_tap_outside
-              hosted_domain='https://shareme-fawaz.vercel.app/'
+              // hosted_domain='https://shareme-fawaz.vercel.app/'
               shape='pill'
               theme='filled_black'
               text='signin_with'
