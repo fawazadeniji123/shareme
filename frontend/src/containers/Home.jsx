@@ -53,11 +53,15 @@ const Home = () => {
           </Link>
           {user ? (
             <Link to={`user-profile/${user?._id}`}>
-              <img src={user?.image} alt='User Profile' className='w-28' />
+              <img
+                src={user?.image}
+                alt='User Profile'
+                className='w-10 h-10 rounded-full'
+              />
             </Link>
           ) : (
-              <Link to={'/login'}>
-                <MdAccountCircle fontSize={40} className='cursor-pointer' />
+            <Link to={'/login'}>
+              <MdAccountCircle fontSize={40} className='cursor-pointer' />
             </Link>
           )}
         </div>
