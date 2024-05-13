@@ -1,7 +1,8 @@
 import { NavLink, Link } from 'react-router-dom'
 import { RiHomeFill } from 'react-icons/ri'
-import { IoIosArrowForward } from 'react-icons/io'
+// import { IoIosArrowForward } from 'react-icons/io'
 import { MdAccountCircle } from 'react-icons/md'
+import PropTypes from 'prop-types';
 
 import logo from '../assets/logo.png'
 
@@ -21,6 +22,15 @@ const categories = [
 
 const handleCloseSidebar = closeToggle => () => {
   if (closeToggle) closeToggle(false)
+}
+
+Sidebar.propTypes = {
+  user: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+  }).isRequired,
+  closeToggle: PropTypes.func,
 }
 
 const Sidebar = ({ user, closeToggle }) => {
