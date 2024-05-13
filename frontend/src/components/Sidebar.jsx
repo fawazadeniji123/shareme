@@ -24,15 +24,6 @@ const handleCloseSidebar = closeToggle => () => {
   if (closeToggle) closeToggle(false)
 }
 
-Sidebar.propTypes = {
-  user: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired,
-  }).isRequired,
-  closeToggle: PropTypes.func,
-}
-
 const Sidebar = ({ user, closeToggle }) => {
   return (
     <div className='flex flex-col justify-between bg-white h-full overflow-y-scroll min-w-210 hide-scrollbar '>
@@ -95,6 +86,17 @@ const Sidebar = ({ user, closeToggle }) => {
       )}
     </div>
   )
+}
+
+
+Sidebar.propTypes = {
+  user: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    _type: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+  }),
+  closeToggle: PropTypes.func,
 }
 
 export default Sidebar
