@@ -4,7 +4,6 @@ import { IoMdAdd, IoMdSearch } from 'react-icons/io'
 import { MdAccountBox } from 'react-icons/md'
 
 const Navbar = ({ searchTerm, setSearchTerm, user }) => {
-  user = null
   const navigate = useNavigate()
 
   return (
