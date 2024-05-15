@@ -15,10 +15,6 @@ const Feed = () => {
   // ! TODO: search for users
 
   useEffect(() => {
-    console.log(pins)
-  }, [loading, pins])
-
-  useEffect(() => {
     setLoading(true)
 
     if (categoryId) {
