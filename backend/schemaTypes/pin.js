@@ -57,9 +57,9 @@ export default {
       ],
     },
     {
-      name: 'userid',
+      name: 'userId',
       type: 'string',
       title: 'UserId',
-    }
+    },
   ],
 }
