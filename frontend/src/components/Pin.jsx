@@ -41,7 +41,6 @@ const Pin = ({ pin: { image, postedBy, _id, destination, save } }) => {
                 <a
                   href={'#'}
                   onClick={e => {
-                    console.log(e)
                     e.preventDefault()
                     e.stopPropagation()
 
