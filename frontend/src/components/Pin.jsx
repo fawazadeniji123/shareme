@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import { Link, useNavigate } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import { MdDownloadForOffline } from 'react-icons/md'
@@ -8,7 +8,6 @@ import { BsFillArrowUpCircleFill } from 'react-icons/bs'
 
 import { client, urlFor } from '../client'
 import { fetchUser } from '../utils/fetchUser'
-
 
 const Pin = ({ pin: { image, postedBy, _id, destination, save } }) => {
   const [postHovered, setPostHovered] = useState(false)
@@ -40,9 +39,25 @@ const Pin = ({ pin: { image, postedBy, _id, destination, save } }) => {
             <div className='flex items-center justify-between'>
               <div className='flex gap-2'>
                 <a
-                  href={`${image?.asset?.url}?dl=`}
-                  download
-                  onClick={e => e.stopPropagation()}
+                  href={'#'}
+                  onClick={e => {
+                    console.log(e)
+                    e.preventDefault()
+                    e.stopPropagation()
+
+                    // only download if user is signed in, else redirect to sign in
+                    if (!user) {
+                      navigate('/login')
+                      return
+                    }
+
+                    // if user is signed in, download the image
+                    const a = document.createElement('a')
+                    a.href = `${image?.asset?.url}?dl=`
+                    a.download = 'image.jpg'
+                    a.click()
+                    a.remove()
+                  }}
                   className='bg-white w-9 h-9 rounded-full flex items-center justify-center text-dark text-xl opacity-75 hover:opacity-100 hover:shadow-md outline-none'
                 >
                   <MdDownloadForOffline />
