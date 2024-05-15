@@ -2,22 +2,21 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import { HiMenu } from 'react-icons/hi'
 import { AiFillCloseCircle } from 'react-icons/ai'
-import { MdAccountCircle } from "react-icons/md";
+import { MdAccountCircle } from 'react-icons/md'
 
 import { Sidebar, UserProfile } from '../components'
 import Pins from './Pins'
 import { client } from '../client'
 import logo from '../assets/logo.png'
 import { userQuery } from '../utils/data'
+import { fetchUser } from '../utils/fetchUser'
 
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false)
   const [user, setUser] = useState(null)
   const scrollRef = useRef(null)
 
-  const userInfo = localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user'))
-    : localStorage.clear()
+  const userInfo = fetchUser()
 
   useEffect(() => {
     const query = userQuery(userInfo?.sub)
