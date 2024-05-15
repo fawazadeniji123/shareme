@@ -74,11 +74,11 @@ const Pin = ({ pin: { image, postedBy, _id, destination, save } }) => {
 
 Pin.propTypes = {
   pin: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    postedBy: PropTypes.string.isRequired,
+    image: PropTypes.object.isRequired,
+    postedBy: PropTypes.object.isRequired,
     _id: PropTypes.string.isRequired,
     destination: PropTypes.string.isRequired,
-    save: PropTypes.array.isRequired,
+    save: PropTypes.array,
   }).isRequired,
 }
 
