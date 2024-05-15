@@ -16,7 +16,7 @@ const Pin = ({ pin: { image, postedBy, _id, destination, save } }) => {
 
   const user = fetchUser()
 
-  const alreadySaved = save?.includes(user.googleId)
+  const alreadySaved = save?.includes(user.sub)
 
   return (
     <div className='m-2 '>
