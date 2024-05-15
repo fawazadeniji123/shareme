@@ -15,6 +15,10 @@ const Feed = () => {
   // ! TODO: search for users
 
   useEffect(() => {
+    console.log(pins)
+  }, [loading, pins])
+
+  useEffect(() => {
     setLoading(true)
 
     if (categoryId) {
@@ -47,10 +51,10 @@ const Feed = () => {
     return <Spinner message='we are adding new ideas to your feed...' />
   return (
     <div>
-      {pins ? (
+      {pins.length ? (
         <MasonryLayout pins={pins} />
       ) : (
-        <h1 className='text-center mt-5'>No pins available</h1>
+        <h1 className='text-center mt-5'>No pins available...</h1>
       )}
     </div>
   )
