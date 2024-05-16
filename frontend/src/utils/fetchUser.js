@@ -1,4 +1,4 @@
 export const fetchUser = () =>
-  localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user'))
+  localStorage.getItem('shareme_user')
+    ? JSON.parse(localStorage.getItem('shareme_user'))
     : localStorage.clear()

@@ -7,7 +7,7 @@ import { client } from '../client'
 
 const responseGoogle = navigate => credentialResponse => {
   const user = jwtDecode(credentialResponse.credential)
-  localStorage.setItem('user', JSON.stringify(user))
+  localStorage.setItem('shareme_user', JSON.stringify(user))
 
   const { name, picture, sub: googleId } = user
 
