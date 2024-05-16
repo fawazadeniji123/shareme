@@ -4,7 +4,7 @@ import imageUrlBuilder from '@sanity/image-url/'
 export const client = createClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
   dataset: 'production',
-  apiVersion: 'v2022-03-07',
+  apiVersion: '2023-05-03',
   useCdn: true,
   token: import.meta.env.VITE_SANITY_API_TOKEN,
 })
