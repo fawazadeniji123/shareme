@@ -25,10 +25,9 @@ export const userPinsQuery = userId => {
     save[] {
       _key,
       postedBy-> {
-        _id
+        _id,
         userName,
         image 
-        }
       }
     }
   }`
@@ -57,10 +56,9 @@ export const pinQuery = pinId => {
     save[] {
       _key,
       postedBy-> {
-        _id
+        _id,
         userName,
-        image 
-        }
+        image
       }
     }
   }`
@@ -89,10 +87,9 @@ export const searchQuery = searchTerm => {
     save[] {
       _key,
       postedBy-> {
-        _id
+        _id,
         userName,
         image 
-        }
       }
     }
   }`
