@@ -5,7 +5,7 @@ export const client = createClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
   dataset: 'production',
   apiVersion: '2023-05-03',
-  useCdn: true,
+  useCdn: false,
   token: import.meta.env.VITE_SANITY_API_TOKEN,
 })
 
