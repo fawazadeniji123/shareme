@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdDownloadForOffline } from 'react-icons/md'
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import { AiFillHeart, AiOutlineHeart, AiTwotoneDelete } from 'react-icons/ai'
+import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 
 import { handleSave } from '../utils/handleSave'
+import { handleDelete } from '../utils/handleDelete'
 
 const PinOverlay = ({
   user,
@@ -12,6 +14,8 @@ const PinOverlay = ({
   setSaveList,
   pinId,
   image,
+  destination,
+  postedBy,
 }) => {
   const navigate = useNavigate()
 
@@ -44,7 +48,7 @@ const PinOverlay = ({
         </div>
         <button
           className={`flex items-center justify-between opacity-70 ${
-            alreadySaved ? 'text-red-600' : 'text-white'
+            alreadySaved ? 'text-red-600' : 'text-white hover:text-red-600'
           } hover:opacity-100 font-bold px-1 py-1 text-base rounded-3xl hover:shadow-md outline-none transition-all duration-100 ease-in`}
           onClick={handleSave(pinId, user, saveList, setSaveList, navigate)}
         >
@@ -55,6 +59,30 @@ const PinOverlay = ({
           )}
           <span className='px-1'>{saveList?.length || null}</span>
         </button>
+      </div>
+      <div className='flex justify-between items-center gap-2 w-full'>
+        {destination && (
+          <a
+            href={destination}
+            target='_blank'
+            rel='noreferrer'
+            className='bg-white flex items-center gap-2 p-2 rounded-full text-black font-bold opacity-70 hover:opacity-100 hover:shadow-md'
+          >
+            <BsFillArrowRightCircleFill />
+            {destination.length > 20
+              ? destination.slice(8, 20)
+              : destination.slice(8)}
+          </a>
+        )}
+        {postedBy?._id === user?.sub && (
+          <button
+            type='button'
+            onClick={handleDelete(pinId, setSaveList)}
+            className='bg-white p-2 opacity-70 hover:opacity-100 font-bold text-dark text-base rounded-3xl hover:shadow-md outline-none'
+          >
+            <AiTwotoneDelete />
+          </button>
+        )}
       </div>
     </div>
   )
@@ -67,6 +95,8 @@ PinOverlay.propTypes = {
   setSaveList: PropTypes.func.isRequired,
   pinId: PropTypes.string.isRequired,
   image: PropTypes.object.isRequired,
+  destination: PropTypes.string,
+  postedBy: PropTypes.object,
 }
 
 export default PinOverlay
