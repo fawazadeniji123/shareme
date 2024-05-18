@@ -7,7 +7,7 @@ import { urlFor } from '../client'
 import { fetchUser } from '../utils/fetchUser'
 import useIsMobileOrTablet from '../hooks/useIsMobileOrTablet'
 
-const Pin = ({ pin: { image, _id, save } }) => {
+const Pin = ({ pin: { image, _id, save, destination, postedBy } }) => {
   const [saveList, setSaveList] = useState(save)
   const [postHovered, setPostHovered] = useState(false)
   const [alreadySaved, setAlreadySaved] = useState(false)
@@ -44,9 +44,19 @@ const Pin = ({ pin: { image, _id, save } }) => {
             setSaveList={setSaveList}
             pinId={_id}
             image={image}
+            destination={destination}
+            postedBy={postedBy}
           />
         )}
       </div>
+      <Link to={`/user-profile/${user._id}`} className='flex gap-2 mt-2 items-center'>
+        <img
+          src={postedBy?.image}
+          alt="User Profile"
+          className='w-8 h-8 rounded-full object-cover'
+        />
+        <p className='font-semibold capitalize'>{ postedBy?.userName }</p>
+      </Link>
     </div>
   )
 }
@@ -56,6 +66,8 @@ Pin.propTypes = {
     image: PropTypes.object.isRequired,
     _id: PropTypes.string.isRequired,
     save: PropTypes.array,
+    destination: PropTypes.string,
+    postedBy: PropTypes.object,
   }),
 }
 
