@@ -66,6 +66,7 @@ const PinOverlay = ({
             href={destination}
             target='_blank'
             rel='noreferrer'
+            onClick={e => e.stopPropagation()}
             className='bg-white flex items-center gap-2 p-2 rounded-full text-black font-bold opacity-70 hover:opacity-100 hover:shadow-md'
           >
             <BsFillArrowRightCircleFill />
