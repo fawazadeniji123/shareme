@@ -17,7 +17,7 @@ const Spinner = ({ message }) => {
 }
 
 Spinner.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string,
 }
 
 export default Spinner
