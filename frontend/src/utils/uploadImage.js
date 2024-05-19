@@ -5,7 +5,8 @@ export const uploadImage =
     if (
       !(
         type === 'image/png' ||
-        type === 'image/jpgg' ||
+        type === 'image/jpeg' ||
+        type === 'image/jpg' ||
         type === 'image/svg' ||
         type === 'image/gif' ||
         type === 'image/tiff'
@@ -17,12 +18,12 @@ export const uploadImage =
     try {
       setWrongImageType(false)
       setLoading(true)
-  
+
       const document = await client.assets.upload('image', e.target.files[0], {
         contentType: type,
         fileName: name,
       })
-  
+
       setImageAsset(document)
       setLoading(false)
     } catch (error) {
