@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { MdDownloadForOffline } from 'react-icons/md'
 import { AiFillHeart, AiOutlineHeart, AiTwotoneDelete } from 'react-icons/ai'
 import { BsFillArrowRightCircleFill } from 'react-icons/bs'
@@ -67,11 +67,11 @@ const PinOverlay = ({
             target='_blank'
             rel='noreferrer'
             onClick={e => e.stopPropagation()}
-            className='bg-white flex items-center gap-2 p-2 rounded-full text-black font-bold opacity-70 hover:opacity-100 hover:shadow-md'
+            className='bg-white flex items-center gap-2 px-2 py-1 rounded-full text-black font-bold opacity-70 hover:opacity-100 hover:shadow-md'
           >
             <BsFillArrowRightCircleFill />
             {destination.length > 20
-              ? destination.slice(8, 20)
+              ? destination.slice(8, 19)
               : destination.slice(8)}
           </a>
         )}
