@@ -26,7 +26,6 @@ const CreatePin = ({ user }) => {
       navigate('/login')
     }
   }, [user, navigate])
-  
 
   return (
     <div className='flex flex-col justify-center items-center mt-5 lg:h-4/5'>
@@ -39,7 +38,11 @@ const CreatePin = ({ user }) => {
         <div className='bg-secondaryColor p-3 flex flex-0.7 w-full cursor-pointer'>
           <div className='flex justify-center items-center flex-col border-2 border-dotted border-gray-300 p-3 w-full h-420'>
             {loading && <Spinner />}
-            {wrongImageType && <p>Wrong image type</p>}
+            {wrongImageType && (
+              <p className='text-red-500 mb-5 text-xl transition-all duration-150 ease-in'>
+                Wrong image type
+              </p>
+            )}
             {!imageAsset ? (
               <label htmlFor='upload-image' className='cursor-pointer'>
                 <div className='flex flex-col items-center justify-center h-full'>
